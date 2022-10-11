@@ -1,0 +1,20 @@
+*.class
+.classpath
+# Package Files #
+*.jar
+*.war
+*.ear
+*.gz
+.project
+.settings/
+*.out
+*.err
+*.iml
+.ruby-version
+.idea/
+../.idea/
+.DS_Store
+target/
+app.log
+
+.github_access_token
