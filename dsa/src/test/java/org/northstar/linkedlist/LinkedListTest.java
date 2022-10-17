@@ -264,4 +264,15 @@ public class LinkedListTest {
         Integer value = list.get(3);
         Assert.assertEquals(insertValue3, value);
     }
+    @Test
+    public void testReverseLinkedList() {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.insert(50);
+        list.insert(40);
+        list.insert(30);
+        list.reverseLinkedList();
+        Assert.assertEquals(Integer.valueOf(50), list.get(1) );
+        Assert.assertEquals(Integer.valueOf(40), list.get(2) );
+        Assert.assertEquals(Integer.valueOf(30), list.get(3) );
+    }
 }

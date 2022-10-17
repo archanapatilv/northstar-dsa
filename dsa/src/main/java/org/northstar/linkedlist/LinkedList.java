@@ -104,4 +104,30 @@ public class LinkedList<T> {
     public boolean isEmpty() {
         return size == 0;
     }
+
+    public void reverseLinkedList() {
+       if (null != head) {
+           Node temp = head;
+           reverseInternally(temp).setNextNode(null);
+       }
+    }
+
+    //1->2->3
+    private Node reverseInternally(Node node) {
+        if (null != node.getNextNode()) {
+            reverseInternally(node.getNextNode()).setNextNode(node);
+        } else {
+            head = node;
+        }
+        return node;
+    }
+
+    /*public void printLinkedList() {
+        Node temp = head;
+        while (null != temp) {
+            System.out.print(" " + temp.getValue());
+            temp = temp.getNextNode();
+        }
+        System.out.println();
+    }*/
 }
