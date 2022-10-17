@@ -105,6 +105,21 @@ public class LinkedList<T> {
         return size == 0;
     }
 
+    public void reverseLinkedListIteratively() {
+        if(null != head) {
+            Node temp = head;
+            Node prev = null;
+            Node next = null;
+            while(null != temp) {
+                next = temp.getNextNode();
+                temp.setNextNode(prev);
+                prev = temp;
+                temp = next;
+            }
+            head = prev;
+        }
+    }
+
     public void reverseLinkedList() {
        if (null != head) {
            Node temp = head;

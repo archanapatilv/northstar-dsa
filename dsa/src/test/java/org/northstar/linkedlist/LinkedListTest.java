@@ -275,4 +275,31 @@ public class LinkedListTest {
         Assert.assertEquals(Integer.valueOf(40), list.get(2) );
         Assert.assertEquals(Integer.valueOf(30), list.get(3) );
     }
+    @Test
+    public void testReverseLinkedListWithOneNode() {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.insert(50);
+        list.reverseLinkedList();
+        Assert.assertEquals(Integer.valueOf(50), list.get(1) );
+    }
+
+    @Test
+    public void testReverseLinkedListIterative() {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.insert(50);
+        list.insert(40);
+        list.insert(30);
+        list.reverseLinkedListIteratively();
+        Assert.assertEquals(Integer.valueOf(50), list.get(1) );
+        Assert.assertEquals(Integer.valueOf(40), list.get(2) );
+        Assert.assertEquals(Integer.valueOf(30), list.get(3) );
+    }
+
+    @Test
+    public void testReverseLinkedListIterativeWithOneNode() {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.insert(50);
+        list.reverseLinkedListIteratively();
+        Assert.assertEquals(Integer.valueOf(50), list.get(1) );
+    }
 }
