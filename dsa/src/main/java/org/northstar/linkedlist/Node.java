@@ -4,8 +4,18 @@ public class Node<T> {
     private T value;
     private Node nextNode;
 
+    private Node prevNode;
+
     Node(T value) {
         this.value = value;
+    }
+
+    public Node getPrevNode() {
+        return prevNode;
+    }
+
+    public void setPrevNode(Node prevNode) {
+        this.prevNode = prevNode;
     }
 
     Node(T value, Node nextNode) {
