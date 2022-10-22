@@ -4,7 +4,7 @@ import java.nio.charset.StandardCharsets;
 
 public class ReverseString {
     public static void main(String[] args) throws Exception {
-        String test = "archana";
+        String test = "test";
         printReverse(test);
         System.out.println();
         System.out.println(reverse(test));
