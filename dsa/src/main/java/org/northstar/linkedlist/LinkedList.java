@@ -1,5 +1,7 @@
 package org.northstar.linkedlist;
 
+import org.northstar.common.model.Node;
+
 public class LinkedList<T> {
     private Node head;
     private int size;
