@@ -3,19 +3,18 @@ package org.northstar.stack;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class StackTest {
-
+public class ArrayStackTest {
     @Test
-    public void testStackPushOneItem() {
-        Stack<Integer> stack = new Stack<>();
+    public void testStackPushOneItem() throws Exception {
+        Stack<Integer> stack = new ArrayStack<>();
         Integer integer = Integer.valueOf(10);
         stack.push(integer);
         Assert.assertEquals(integer, stack.top());
     }
 
     @Test
-    public void testStackPushMultipleItems() {
-        Stack<Integer> stack = new Stack<>();
+    public void testStackPushMultipleItems() throws Exception {
+        Stack<Integer> stack = new ArrayStack<>();
         Integer integer10 = Integer.valueOf(10);
         Integer integer20 = Integer.valueOf(20);
         stack.push(integer10);
@@ -23,9 +22,25 @@ public class StackTest {
         Assert.assertEquals(integer20, stack.top());
     }
 
+    @Test (expected = Exception.class)
+    public void testStackPushMultipleItemsToMax() throws Exception {
+        Stack<Integer> stack = new ArrayStack<>();
+        stack.push(Integer.valueOf(10));
+        stack.push(Integer.valueOf(20));
+        stack.push(Integer.valueOf(10));
+        stack.push(Integer.valueOf(20));
+        stack.push(Integer.valueOf(10));
+        stack.push(Integer.valueOf(20));
+        stack.push(Integer.valueOf(10));
+        stack.push(Integer.valueOf(20));
+        stack.push(Integer.valueOf(10));
+        stack.push(Integer.valueOf(20));
+        stack.push(Integer.valueOf(10));
+    }
+
     @Test
-    public void testStackPopWithOneItem() {
-        Stack<Integer> stack = new Stack<>();
+    public void testStackPopWithOneItem() throws Exception {
+        Stack<Integer> stack = new ArrayStack<>();
         Integer integer10 = Integer.valueOf(10);
         stack.push(integer10);
         Assert.assertEquals(integer10, stack.pop());
@@ -33,8 +48,8 @@ public class StackTest {
     }
 
     @Test
-    public void testStackPopMultipleItems() {
-        Stack<Integer> stack = new Stack<>();
+    public void testStackPopMultipleItems() throws Exception {
+        Stack<Integer> stack = new ArrayStack<>();
         Integer integer10 = Integer.valueOf(10);
         Integer integer20 = Integer.valueOf(20);
         stack.push(integer10);
@@ -46,16 +61,16 @@ public class StackTest {
     }
 
     @Test
-    public void testStackTopOneItem() {
-        Stack<Integer> stack = new Stack<>();
+    public void testStackTopOneItem() throws Exception {
+        Stack<Integer> stack = new ArrayStack<>();
         Integer integer10 = Integer.valueOf(10);
         stack.push(integer10);
         Assert.assertEquals(integer10, stack.top());
     }
 
     @Test
-    public void testStackTopMultipleItem() {
-        Stack<Integer> stack = new Stack<>();
+    public void testStackTopMultipleItem() throws Exception{
+        Stack<Integer> stack = new ArrayStack<>();
         Integer integer10 = Integer.valueOf(10);
         Integer integer20 = Integer.valueOf(20);
         stack.push(integer10);
@@ -68,25 +83,23 @@ public class StackTest {
         Assert.assertEquals(integer20, stack.top());
         stack.pop();
         Assert.assertEquals(integer10, stack.top());
-        stack.pop();
-        Assert.assertEquals(null, stack.top());
     }
 
-    @Test
-    public void testStackPopWithNoItems() {
-        Stack<Integer> stack = new Stack<>();
+    @Test (expected = Exception.class)
+    public void testStackPopWithNoItems() throws Exception {
+        Stack<Integer> stack = new ArrayStack<>();
         Assert.assertEquals(null, stack.pop());
     }
 
     @Test
     public void testStackEmpty() {
-        Stack<Integer> stack = new Stack<>();
+        Stack<Integer> stack = new ArrayStack<>();
         Assert.assertTrue(stack.isEmpty());
     }
 
     @Test
-    public void testStackEmptyWhenStackHasItems() {
-        Stack<Integer> stack = new Stack<>();
+    public void testStackEmptyWhenStackHasItems() throws Exception {
+        Stack<Integer> stack = new ArrayStack<>();
         stack.push(Integer.valueOf(10));
         Assert.assertFalse(stack.isEmpty());
     }
