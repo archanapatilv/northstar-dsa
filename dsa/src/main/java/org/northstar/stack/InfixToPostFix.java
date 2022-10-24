@@ -46,8 +46,8 @@ public class InfixToPostFix {
                 break;
                 case ADD: {
                     // Remove from stack when the value score is lesser than or equal the one at the top of the stack
-                    if (!stack.isEmpty() && Operators.ADDITION.weight <= stack.top().weight) {
-                        while (!stack.isEmpty()) {
+                    if (!stack.isEmpty() && Operators.ADDITION.weight <= stack.top().weight && stack.top().operator != L_PARENTHESES) {
+                        while (!stack.isEmpty()  && stack.top().operator != L_PARENTHESES) {
                             postFixExpression += stack.pop().operator;
                         }
                     }
@@ -56,8 +56,8 @@ public class InfixToPostFix {
                 break;
                 case SUB: {
                     // Remove from stack when the value score is lesser than or equal the one at the top of the stack
-                    if (!stack.isEmpty() && Operators.SUBTRACTION.weight <= stack.top().weight) {
-                        while (!stack.isEmpty()) {
+                    if (!stack.isEmpty() && Operators.SUBTRACTION.weight <= stack.top().weight  && stack.top().operator != L_PARENTHESES) {
+                        while (!stack.isEmpty()  && stack.top().operator != L_PARENTHESES) {
                             postFixExpression += stack.pop().operator;
                         }
                     }
@@ -65,8 +65,8 @@ public class InfixToPostFix {
                 }
                 break;
                 case MULTIPLY: {
-                    if (!stack.isEmpty() && Operators.MULTIPLICATION.weight <= stack.top().weight) {
-                        while (!stack.isEmpty()) {
+                    if (!stack.isEmpty() && Operators.MULTIPLICATION.weight <= stack.top().weight  && stack.top().operator != L_PARENTHESES) {
+                        while (!stack.isEmpty() && stack.top().operator != L_PARENTHESES) {
                             postFixExpression += stack.pop().operator;
                         }
                     }
@@ -74,8 +74,8 @@ public class InfixToPostFix {
                 }
                 break;
                 case DIVIDE: {
-                    if (!stack.isEmpty() && Operators.DIVISION.weight <= stack.top().weight) {
-                        while (!stack.isEmpty()) {
+                    if (!stack.isEmpty() && Operators.DIVISION.weight <= stack.top().weight  && stack.top().operator != L_PARENTHESES) {
+                        while (!stack.isEmpty() && stack.top().operator != L_PARENTHESES) {
                             postFixExpression += stack.pop().operator;
                         }
                     }

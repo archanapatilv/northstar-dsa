@@ -69,4 +69,10 @@ public class InfixToPostFixTest {
         String testExpression = "a+b*c+x/y";
         Assert.assertEquals("abc*+xy/+", InfixToPostFix.infixToPostFix(testExpression));
     }
+
+    @Test
+    public void testExpression12() throws Exception {
+        String testExpression = "((a+b-c)+d/e)";
+        Assert.assertEquals("ab+c-de/+", InfixToPostFix.infixToPostFix(testExpression));
+    }
 }
