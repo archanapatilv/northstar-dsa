@@ -45,7 +45,6 @@ public class InfixToPostFix {
                 }
                 break;
                 case ADD: {
-                    // add to stack when the value score is greater than the one at the top of the stack
                     // Remove from stack when the value score is lesser than or equal the one at the top of the stack
                     if (!stack.isEmpty() && Operators.ADDITION.weight <= stack.top().weight) {
                         while (!stack.isEmpty()) {
@@ -56,7 +55,6 @@ public class InfixToPostFix {
                 }
                 break;
                 case SUB: {
-                    // add to stack when the value score is greater than the one at the top of the stack
                     // Remove from stack when the value score is lesser than or equal the one at the top of the stack
                     if (!stack.isEmpty() && Operators.SUBTRACTION.weight <= stack.top().weight) {
                         while (!stack.isEmpty()) {
