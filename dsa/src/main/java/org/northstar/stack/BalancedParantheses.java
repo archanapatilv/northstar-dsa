@@ -43,7 +43,6 @@ public class BalancedParantheses {
                     break;
                 }
             }
-
         }
         return stack.isEmpty();
     }
