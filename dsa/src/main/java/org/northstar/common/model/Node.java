@@ -1,4 +1,4 @@
-package org.northstar.linkedlist;
+package org.northstar.common.model;
 
 public class Node<T> {
     private T value;
@@ -6,7 +6,7 @@ public class Node<T> {
 
     private Node prevNode;
 
-    Node(T value) {
+    public Node(T value) {
         this.value = value;
     }
 
