@@ -1,0 +1,25 @@
+{
+  "name": "my-nodejs-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/archanapatilv/northstar-dsa.git"
+  },
+  "author": "Archana Patil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/archanapatilv/northstar-dsa/issues"
+  },
+  "homepage": "https://github.com/archanapatilv/northstar-dsa#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "ngrok": "^5.0.0-beta.2",
+    "twilio": "^5.3.5"
+  }
+}
