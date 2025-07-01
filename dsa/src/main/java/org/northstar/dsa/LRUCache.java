@@ -29,6 +29,7 @@ public class LRUCache {
         }
         cache.put(key, value);
         orderedList.addFirst(key);
+
     }
 
     public static void main(String[] args) {
