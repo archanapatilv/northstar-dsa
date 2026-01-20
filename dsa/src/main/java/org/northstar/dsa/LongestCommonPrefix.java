@@ -58,6 +58,28 @@ public class LongestCommonPrefix {
         return commonPrefix.toString();
     }
 
+    public String _longestCommonPrefix(String[] strs) {
+        int longestCommonPrefixLength = strs[0].length();
+        if(longestCommonPrefixLength == 0) {
+            return "";
+        }
+        int j = 0;
+        while(j < strs[0].length()) {
+            for(int i = 1; i < strs.length; i++) {
+                if(strs[i].isEmpty()) {
+                    return "";
+                } else if (j >= strs[i].length()) {
+                    return j == 0 ? "" : strs[0].substring(0,j);
+                }
+                if(strs[0].charAt(j) != strs[i].charAt(j)) {
+                    return j == 0 ? "" : strs[0].substring(0,j);
+                }
+            }
+            j++;
+        }
+        return j == 0 ? "" : strs[0].substring(0,j);
+    }
+
     public static void main(String[] args) {
         String[] strs = new String[]{"flower","flow","flight"};
         System.out.println("The longest common prefix of {flower, flow, flight} is : " + longestCommonPrefix(strs));

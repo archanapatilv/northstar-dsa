@@ -1,5 +1,6 @@
+package org.northstar.dsa;
+
 import java.util.Arrays;
-import java.util.List;
 
 public class CoinChange {
 
