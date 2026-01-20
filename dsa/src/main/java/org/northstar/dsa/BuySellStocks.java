@@ -21,6 +21,18 @@ public class BuySellStocks {
         return maxProfit;
     }
 
+    public int maxProfit(int[] prices, int fee) {
+        int buyPrice = prices[0];
+        int currentProfit = 0;
+        int maxProfit = 0;
+        for(int i = 1; i < prices.length; i++) {
+            currentProfit = prices[i] - buyPrice - fee;
+            maxProfit = Math.max(currentProfit, maxProfit);
+            buyPrice = Math.min(buyPrice, prices[i] - maxProfit);
+
+        }
+        return maxProfit;
+    }
     public static void main(String[] args) {
         int[] prices  = {7, 1, 5, 3, 6, 4};
         System.out.println("Max Profit = " + maxProfit(prices));

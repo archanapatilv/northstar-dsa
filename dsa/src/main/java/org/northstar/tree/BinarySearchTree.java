@@ -4,6 +4,8 @@ import org.northstar.common.model.TreeNode;
 import org.northstar.queue.LinkedQueue;
 import org.northstar.queue.Queue;
 
+import java.util.List;
+
 import static java.lang.Math.PI;
 import static java.lang.Math.max;
 
@@ -16,9 +18,12 @@ import static java.lang.Math.max;
  */
 public class BinarySearchTree implements Tree {
     private TreeNode root = null;
+
+    //Recursive insert
     public void insert(int data) {
-        root = internalInsert(root, data);
+        TreeNode node = internalInsert(root, data);
     }
+    //Recursive insert
     private TreeNode internalInsert(TreeNode node, int data) {
         if(null == node) {
             node = new TreeNode(data);
@@ -29,6 +34,103 @@ public class BinarySearchTree implements Tree {
         }
         return node;
     }
+    //Iterative insert
+    public TreeNode insertNode( int data) {
+        TreeNode node = new TreeNode(data);
+        if(null == root) {
+            root = node;
+            return root;
+        }
+        TreeNode parent = root, current = root;
+        while(current != null) {
+            parent = current;
+            if((int)current.getValue() >= data) {
+                current = current.getLeftTree();
+            } else {
+                current = current.getRightTree();
+            }
+        }
+        if((int)parent.getValue() >= data) {
+            parent.setLeftTree(node);
+        } else {
+            parent.setRightTree(node);
+        }
+        return node;
+    }
+
+    // O(n)
+    public boolean isSameTree(TreeNode node1, TreeNode node2) {
+        if(null == node1 && null == node2) {
+            return true;
+        }
+        if(null == node1 || null == node2) {
+            return false;
+        }
+        return node1.getValue() == node2.getValue() && isSameTree(node1.getLeftTree(), node2.getLeftTree())
+                && isSameTree(node1.getRightTree(), node2.getRightTree());
+    }
+
+    //Size of a binary tree
+    public int size(TreeNode node) {
+        if(null == node) {
+            return 0;
+        }
+        int left = size(node.getLeftTree());
+        int right = size(node.getRightTree());
+        return left + right + 1;
+    }
+
+    public int height(TreeNode node) {
+        if(null == node) {
+            return 0;
+        }
+        int left = height(node.getLeftTree());
+        int right = height(node.getRightTree());
+        return 1 + Math.max(left, right);
+    }
+
+    public boolean rootToLeafSum(TreeNode root, int sum, List<Integer> result) {
+        if(null == root) {
+            return false;
+        }
+        //reached leaf node and the value is same as the remaining sum
+        if(null == root.getLeftTree() && null == root.getRightTree()) {
+             if(sum == (int)root.getValue()) {
+                 result.add((int)root.getValue());
+                 return true;
+             } else {
+                 return false;
+             }
+        }
+        if(rootToLeafSum(root.getLeftTree(), sum - (int)root.getValue(), result)) {
+            result.add((int)root.getValue()); // Need to add root data as rest of the values are added above at the leaf level
+            return true;
+        }
+        if(rootToLeafSum(root.getRightTree(), sum - (int)root.getValue(), result)) {
+            result.add((int)root.getValue()); // Need to add root data as rest of the values are added above.
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isBSTree(TreeNode node) {
+        return _isBSTree(node, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+
+    private boolean _isBSTree(TreeNode node, int low, int high) {
+
+        if(null == node) {
+            return true;
+        }
+        if((int)node.getValue() <= low && (int)node.getValue() > high) {
+            return false;
+        }
+        return _isBSTree(node.getLeftTree(), low, (int)node.getValue())
+                && _isBSTree(node.getRightTree(), (int)node.getValue(), high);
+    }
+
+
+    //Time complexity O(logn) for the balanced binary search tree and general worst case of O(n)
     public boolean search(int data) {
         if (null == internalSearch(root, data)) {
             return false;

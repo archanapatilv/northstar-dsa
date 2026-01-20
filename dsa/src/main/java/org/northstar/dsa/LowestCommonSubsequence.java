@@ -16,7 +16,7 @@ public class LowestCommonSubsequence {
 
         //DP
         lcsDP(0, 0, 1, 1, a, b);
-        System.out.println(RESULT);
+        System.out.println(RESULT[2][4]);
     }
 
     public static void lcsDP(int i, int j, int x, int y, char[] a, char[] b) {

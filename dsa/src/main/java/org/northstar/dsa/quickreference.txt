@@ -1,0 +1,4 @@
+
+Matrix Directions
+static int[] directionRow =    { 0, -1,  1, 0, -1, 1, -1, 1};
+static int[] directionColumn = {-1, -1, -1, 1,  1, 1,  0, 0};
